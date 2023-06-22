@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Generador de Correos</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-X0X9NQETX0');
+</script>
+  <!-- =======================================================
+  * Template Name: iPortfolio
+  * Updated: May 30 2023 with Bootstrap v5.3.0
+  * Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Mobile nav toggle button ======= -->
+  <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
+
+  <!-- ======= Header ======= -->
+  <header id="header">
+    <div class="d-flex flex-column">
+
+      <div class="profile">
+        <img src="assets/img/her2.jpg" alt="" class="img-fluid rounded-circle">
+        <h1 class="text-light"><a href="index.html">Lalito</a></h1>
+        <div class="social-links mt-3 text-center">
+          <a href="https://t.me/drowkid01" class="telegram"><i class="bx bxl-telegram"></i></a>
+          <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+          <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+          <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+          <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+        </div>
+      </div>
+
+      <nav id="navbar" class="nav-menu navbar">
+        <ul>
+          <li><a href="index.html" class="nav-link scrollto"><i class="bx bx-home"></i> <span>Inicio</span></a></li>
+          <li><a href="sitios.html" class="nav-link scrollto"><i class="bx bx-server"></i> <span>Sitios Web</span></a></li>
+          <li><a href="tools.html" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span> Herramientas</span></a></li>
+          <li><a href="post.html" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Publicaciones Recientes</span></a></li>
+          <li><a href="https://t.me/drowkid01" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contáctame</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ======= Hero Section ======= -->
+
+  
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Generador de Correos</h2>
+          <ol>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="tools.html">Herramientas</a></li>
+            <li>Generador de Correos</li>
+          </ol>
+        </div>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-X0X9NQETX0');
+</script>
+    <section class="inner-page">
+      <div class="container">
+     <h1 class="title">Generador de Correos Gmail con Puntos</h1>
+      <div class="input-container">
+        <label for="username">Ingrese su usuario (sin @gmail.com):</label>
+        <input type="text" id="username">
+        <br>
+        <br>
+        <button class="green-botn" onclick="updateEmails()">Generar Correos</button>
+      </div>
+      <div class="output-container">
+        <div class="result-label">
+        <br>
+          <textarea id="emails" rows="25" cols="50"></textarea>
+        </div>
+          <span id="counter">Generadas: 0</span>
+          <button class="green-botn" id="save">Guardar</button>
+          <button class="custom-button">Volver al menu</button>
+      </div>
+      
+        <script>
+      let counterLabel = document.getElementById("counter");
+      let count = 0;
+      let username = '';
+      
+      function* generate(email) {
+        if (email.length <= 1) {
+          yield email;
+        } else {
+          let head = email[0];
+          let tail = email.slice(1);
+          for (let item of generate(tail)) {
+            yield head + item;
+            yield head + '.' + item;
+          }
+        }
+      }
+      
+      function updateEmails() {
+        let newUsername = document.getElementById("username").value;
+        if (newUsername !== username) {
+          username = newUsername;
+          let startTime = new Date();
+          let emails = '';
+          for (let message of generate(username)) {
+            emails += message + '@gmail.com\r\n';
+            count += 1;
+            counterLabel.innerText = 'Generadas: ' + count;
+          }
+          let endTime = new Date();
+          let timeDiff = endTime - startTime;
+          console.log('Finished in ' + timeDiff + 'ms');
+          document.getElementById("emails").value = emails.trim();
+        }
+      }
+      
+      document.getElementById("save").onclick = function() {
+        let blob = new Blob([document.getElementById('emails').value], {
+          type: "text/plain;charset=utf-8",
+          endings: "transparent"
+        });
+        saveAs(blob, document.getElementById('username').value + ".txt");
+      };
+      document.querySelector('.custom-button').addEventListener('click', function() {
+        window.open("https://todoreal.com", "_blank");
+      });
+    </script>
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>DrowKid</span></strong>
+      </div>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/ -->
+        2022-2023 by <a href="https://">DrowKid</a>
+      </div>
+    </div>
+  </footer><!-- End  Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/typed.js/typed.umd.js"></script>
+  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
